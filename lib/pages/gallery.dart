@@ -18,17 +18,48 @@ class _GalleryState extends State<Gallery> {
         length: items.length,
         child: Builder(builder: (BuildContext context) {
           return Scaffold(
-              appBar: HomeBar(),
-              body: TabBarView(
-                children: items.map((TabItems choice) {
-                  return Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: GalleryPage(
-                      index: DefaultTabController.of(context)!.index,
+            appBar: HomeBar(),
+            body: TabBarView(
+              children: items.map((TabItems choice) {
+                return Padding(
+                  padding: EdgeInsets.all(16.0),
+                  child: GalleryPage(
+                    index: DefaultTabController.of(context)!.index,
+                  ),
+                );
+              }).toList(),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.camera_alt_outlined,
+                      color: Colors.teal,
                     ),
-                  );
-                }).toList(),
-              ));
+                    label: ''),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.photo_outlined,
+                      color: Colors.pink,
+                    ),
+                    label: ''),
+                BottomNavigationBarItem(icon: Icon(Icons.close), label: ''),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      CupertinoIcons.compass,
+                      color: Colors.yellow,
+                    ),
+                    label: ''),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.note_outlined,
+                      color: Colors.purple,
+                    ),
+                    label: ''),
+              ],
+            ),
+          );
         }),
       ),
     );
@@ -58,13 +89,10 @@ class _GalleryPageState extends State<GalleryPage> {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
                   child: Image.asset(
                     "asset/images/$index.jpg",
-                    width: 200,
-                    height: 200,
                     fit: BoxFit.cover,
-                    
-                    
                   ),
                 ),
               );
