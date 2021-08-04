@@ -29,7 +29,7 @@ class _HomeBarState extends State<HomeBar> {
         onTap: (index) {
           setState(() {
             print(_currentIndex);
-
+      
             _currentIndex = index;
           });
         },
@@ -40,18 +40,9 @@ class _HomeBarState extends State<HomeBar> {
             borderRadius: BorderRadius.circular(30), color: Colors.white),
         isScrollable: true,
         tabs: items.map<Widget>((TabItems choice) {
-          return Expanded(
-            child: Tab(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Icon(choice.iconData),
-                  SizedBox()
-                ],
-              ),
-              // icon: Icon(choice.iconData),
-            ),
-          );
+          return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [Tab(icon: Icon(choice.iconData))]);
         }).toList(),
       ),
     );

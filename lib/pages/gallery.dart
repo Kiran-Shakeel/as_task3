@@ -30,52 +30,51 @@ class _GalleryState extends State<Gallery> {
                   );
                 }).toList(),
               ),
+
+              //bottom Navigation
               bottomNavigationBar: Padding(
                 padding: EdgeInsets.only(bottom: 30, left: 32, right: 32),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Container(
-                    height: 70,
+                    height: 60,
                     color: Colors.white,
                     width: MediaQuery.of(context).size.width,
                     child: Expanded(
-                      child: BottomNavigationBar(
-                        type: BottomNavigationBarType.fixed,
-                        items: <BottomNavigationBarItem>[
-                          BottomNavigationBarItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          IconButton(
+                              onPressed: () {},
                               icon: Icon(
-                               
                                 Icons.camera_alt_outlined,
-                                color: Colors.teal,
+                                color: Colors.green,
+                              )),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.photo_outlined,
+                                  color: Colors.pink)),
+                          Container(
+                              height: 70,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                color: Colors.blue,
                               ),
-                              label: ''),
-                          BottomNavigationBarItem(
-                              icon: Icon(
-                                Icons.photo_outlined,
-                                color: Colors.pink,
-                              ),
-                              label: ''),
-                          BottomNavigationBarItem(
-                              icon: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      color: Colors.blue),
-                                  height: 40,
-                                  width: 40,
-                                  child: Icon(Icons.close)),
-                              label: ''),
-                          BottomNavigationBarItem(
-                              icon: Icon(
-                                CupertinoIcons.compass,
-                                color: Colors.yellow,
-                              ),
-                              label: ''),
-                          BottomNavigationBarItem(
+                              child: IconButton(
+                                  onPressed: () {},
+                                  icon:
+                                      Icon(Icons.close, color: Colors.white))),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(CupertinoIcons.compass,
+                                  color: Colors.yellow)),
+                          IconButton(
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.note_outlined,
                                 color: Colors.purple,
-                              ),
-                              label: ''),
+                              ))
                         ],
                       ),
                     ),
@@ -102,19 +101,22 @@ class _GalleryPageState extends State<GalleryPage> {
     return Column(children: [
       Expanded(
         child: GridView.count(
-            crossAxisCount: 2,
+            crossAxisCount: 4,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
-            children: List.generate(21, (index) {
+            children: List.generate(50, (index) {
               return Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
-                  child: Image.asset(
-                    "asset/images/$index.jpg",
-                    fit: BoxFit.cover,
+                  child: Expanded(
+                    child: Image.network(
+                      "https://neilpatel.com/wp-content/uploads/2017/09/image-editing-tools.jpg",
+                      //"asset/images/$index.jpg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               );
