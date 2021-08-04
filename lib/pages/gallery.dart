@@ -46,15 +46,30 @@ class GalleryPage extends StatefulWidget {
 class _GalleryPageState extends State<GalleryPage> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-        crossAxisCount: 4,
-        mainAxisSpacing: 3,
-        children: List.generate(21, (index) {
-          return Center(
-            child: Image.asset("asset/images/$index.jpg"),
-          );
-        }
-        )
-        );
+    return Column(children: [
+      Expanded(
+        child: GridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children: List.generate(21, (index) {
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: ClipRRect(
+                  child: Image.asset(
+                    "asset/images/$index.jpg",
+                    width: 200,
+                    height: 200,
+                    fit: BoxFit.cover,
+                    
+                    
+                  ),
+                ),
+              );
+            })),
+      ),
+    ]);
   }
 }
